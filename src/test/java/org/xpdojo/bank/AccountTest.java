@@ -60,4 +60,15 @@ public class AccountTest {
         assertThat(mainAccount.balance()).isEqualTo(500);
         assertThat(savingsAccount.balance()).isEqualTo(500);
     }
+
+    @Test
+    public void transferAnAmount_OnlyIfFundsAvailable() {
+        Account mainAccount = emptyAccount();
+        Account savingsAccount = emptyAccount();
+
+        mainAccount.deposit(10);
+        mainAccount.transfer(100,savingsAccount);
+        assertThat(savingsAccount.balance()).isEqualTo(0);
+        assertThat(mainAccount.balance()).isEqualTo(10);
+    }
 }

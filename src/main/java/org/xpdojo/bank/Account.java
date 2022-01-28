@@ -27,7 +27,9 @@ public class Account {
     }
 
     public void transfer(int amount, Account savingsAccount) {
-        withdraw(amount);
-        savingsAccount.deposit(amount);
+        if (balance >= amount) {
+            withdraw(amount);
+            savingsAccount.deposit(amount);
+        }
     }
 }

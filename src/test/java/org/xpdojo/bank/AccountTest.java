@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.xpdojo.bank.Account.emptyAccount;
@@ -84,7 +86,9 @@ public class AccountTest {
         account.deposit(1000);
 
         account.printBalanceSlip();
-        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("Balance: 1000" );
+        assertThat(outputStreamCaptor.toString().trim()).contains("Balance: 1000" );
+        assertThat(outputStreamCaptor.toString().trim()).contains("Date: " + LocalDate.now());
+        assertThat(outputStreamCaptor.toString().trim()).contains("Time: ");
     }
 
 }

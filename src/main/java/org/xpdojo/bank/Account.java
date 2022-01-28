@@ -1,5 +1,9 @@
 package org.xpdojo.bank;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Locale;
+
 public class Account {
 
     private int balance;
@@ -35,5 +39,7 @@ public class Account {
 
     public void printBalanceSlip() {
         System.out.println("Balance: " + balance);
+        System.out.println("Date: " + LocalDate.now());
+        System.out.println("Time: " + LocalTime.now());
     }
 }

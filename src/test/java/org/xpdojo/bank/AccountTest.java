@@ -62,7 +62,7 @@ public class AccountTest {
     }
 
     @Test
-    public void transferAnAmount_OnlyIfFundsAvailable() {
+    public void transferAnAmount_DoesNotTransferIfInsufficientFunds() {
         Account mainAccount = emptyAccount();
         Account savingsAccount = emptyAccount();
 

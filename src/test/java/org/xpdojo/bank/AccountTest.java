@@ -26,4 +26,12 @@ public class AccountTest {
         account.deposit(20);
         assertThat(account.balance()).isEqualTo(30);
     }
+
+    @Test
+    public void withdrawAnAmount_shouldDecreaseBalanceBySameAmount() {
+        Account account = emptyAccount();
+        account.withdraw(10);
+        assertThat(account.balance()).isEqualTo(-10);
+    }
+
 }

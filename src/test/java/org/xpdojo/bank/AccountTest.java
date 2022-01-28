@@ -2,6 +2,9 @@ package org.xpdojo.bank;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.xpdojo.bank.Account.emptyAccount;
 
@@ -71,4 +74,17 @@ public class AccountTest {
         assertThat(savingsAccount.balance()).isEqualTo(0);
         assertThat(mainAccount.balance()).isEqualTo(10);
     }
+
+    @Test
+    public void printBalanceSlip() {
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        Account account = emptyAccount();
+        account.deposit(1000);
+
+        account.printBalanceSlip();
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("Balance: 1000" );
+    }
+
 }

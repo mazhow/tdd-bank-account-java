@@ -32,4 +32,8 @@ public class Account {
             savingsAccount.deposit(amount);
         }
     }
+
+    public void printBalanceSlip() {
+        System.out.println("Balance: " + balance);
+    }
 }

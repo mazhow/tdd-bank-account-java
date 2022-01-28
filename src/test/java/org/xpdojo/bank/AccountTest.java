@@ -48,4 +48,16 @@ public class AccountTest {
         account.withdraw(10);
         assertThat(account.balance()).isEqualTo(0);
     }
+
+    @Test
+    public void transferAnAmount_shouldMoveMoneyFromOneAccountToAnother() {
+        Account mainAccount = emptyAccount();
+        Account savingsAccount = emptyAccount();
+
+        mainAccount.deposit(1000);
+        mainAccount.transfer(500,savingsAccount);
+
+        assertThat(mainAccount.balance()).isEqualTo(500);
+        assertThat(savingsAccount.balance()).isEqualTo(500);
+    }
 }

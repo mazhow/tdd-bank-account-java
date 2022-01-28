@@ -25,4 +25,9 @@ public class Account {
             balance -= amount;
         }
     }
+
+    public void transfer(int amount, Account savingsAccount) {
+        withdraw(amount);
+        savingsAccount.deposit(amount);
+    }
 }

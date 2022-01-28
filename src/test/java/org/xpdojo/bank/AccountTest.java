@@ -31,7 +31,21 @@ public class AccountTest {
     public void withdrawAnAmount_shouldDecreaseBalanceBySameAmount() {
         Account account = emptyAccount();
         account.withdraw(10);
-        assertThat(account.balance()).isEqualTo(-10);
+        assertThat(account.balance()).isEqualTo(0);
     }
 
+    @Test
+    public void cannotWithdraw_ifNotEnoughFunds() {
+        Account account = emptyAccount();
+        account.deposit(99);
+        account.withdraw(100);
+        assertThat(account.balance()).isEqualTo(99);
+    }
+
+    @Test
+    public void cannotWithdrawFromEmptyAccount() {
+        Account account = emptyAccount();
+        account.withdraw(10);
+        assertThat(account.balance()).isEqualTo(0);
+    }
 }
